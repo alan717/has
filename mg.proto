@@ -1,0 +1,17 @@
+option optimize_for = LITE_RUNTIME;
+
+message MAGIC_CODE{
+        enum MagicCodeAction{
+             GENERATEPSEUDOR=1;
+             VERIFYMAGICCODE=2;
+             FEATUREUNLOCK=3;
+        }
+        required MagicCodeAction MGAction=1;
+        required int64           MachinePoweronTime=2;
+        required int32           SoftwareVersion=3;
+        required int32           MacAddress=4;
+        required int32           SerilNumber=5;
+        required int32           FeatureIndex=6;
+        required int32           Key=7;
+
+}
