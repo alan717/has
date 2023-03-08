@@ -13,5 +13,6 @@ message MAGIC_CODE{
         required int32           SerilNumber=5;
         required int32           FeatureIndex=6;
         required int32           Key=7;
+        required int32           value=8；
 
 }

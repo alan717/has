@@ -1,12 +1,12 @@
 
 
 
-
+#include <syscall.h>
 
 #include "mg.pb.h"
 #include <google/protobuf/io/coded_stream.h>
 
-
+#include<unistd.h>
 #include <fcntl.h>
 #include <iostream>
 #include <sstream>
@@ -23,8 +23,10 @@ void Hexdump(void *ptr, int buflen);
 int
 main(int argc, char *argv[]) {
 
-    // Write to an address we don't have access to.
-    //dobad((uintptr_t*)0x1234);
+    //测试不用标准call。用syscall。
+    const char msg[] = "Hello World!\n";
+    write(STDOUT_FILENO, msg, sizeof(msg)-1);
+
     testpb();
     return 0;
 }
