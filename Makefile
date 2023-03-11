@@ -7,8 +7,9 @@ CFLAGS=-pthread -I/home/lela/gnu/pb-2.4.1-arm-linux/include -O
 CXX=arm-linux-gnueabi-g++ -std=c++98
 CC=arm-linux-gnueabi-gcc
 all: $(CXXFILE)
-	$(CXX) $(CXXFILE) $(CFLAGS)  $(LDFLAGS) -o prog.elf
+	# $(CXX) $(CXXFILE) $(CFLAGS)  $(LDFLAGS) -o prog.elf
 	$(CC) testwr.c -o pp.bin -static
+	$(CC) hasme.c -o hasme.bin -lm
 
 .PHONY: clean
 	@echo "ok"
