@@ -10,7 +10,7 @@ all: $(CXXFILE) printf_syscall.elf hasme.elf hook.elf
 	$(CXX) $(CXXFILE) $(CFLAGS)  $(LDFLAGS) -o bin/prog.elf
 
 hook.elf :  hook.c
-	$(CC) -Wl,--script=./map.ld -s -Os -nostdlib -nodefaultlibs -fPIC -Wl,-shared $^ -o bin/$@
+	$(CC) -Wl,--script=./map.ld -Os -nostdlib -nodefaultlibs -fPIC -Wl,-shared $^ -o bin/$@
 
 printf_syscall.elf :printf_syscall.c
 	@echo "test syscall build........"
