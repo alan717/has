@@ -6,15 +6,18 @@ LDFLAGS=-L/home/lela/gnu/pb-2.4.1-arm-linux/lib -lprotobuf-lite -pthread -lpthre
 CFLAGS=-pthread -I/home/lela/gnu/pb-2.4.1-arm-linux/include -O
 CXX=arm-linux-gnueabi-g++ -std=c++98
 CC=arm-linux-gnueabi-gcc
-all: $(CXXFILE) t_syscall.elf hasme.elf
-	# $(CXX) $(CXXFILE) $(CFLAGS)  $(LDFLAGS) -o prog.elf
+all: $(CXXFILE) printf_syscall.elf hasme.elf hook.elf
+	$(CXX) $(CXXFILE) $(CFLAGS)  $(LDFLAGS) -o bin/prog.elf
 
-t_syscall.elf :testsyscall.c
+hook.elf :  hook.c
+	$(CC) -Wl,--script=./map.ld -s -Os -nostdlib -nodefaultlibs -fPIC -Wl,-shared $^ -o bin/$@
+
+printf_syscall.elf :printf_syscall.c
 	@echo "test syscall build........"
-	$(CC) -s -static -nostartfiles -e t__printf $^ -o $@ 
+	$(CC) -Wl,--script=./map.ld -s -Os -static -fPIC -nostartfiles -e t__printf $^ -o bin/$@ 
 
 hasme.elf : hasme.c
-	$(CC) -lm $^ -o $@
+	$(CC) -lm $^ -o bin/$@
 
 .PHONY: clean
 	@echo "ok"
@@ -22,4 +25,4 @@ hasme.elf : hasme.c
 clean:
 	@echo "clean ................"
 	rm -f *.o 
-	rm -f *.elf
+	rm -f bin/*.elf
