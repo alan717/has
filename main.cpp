@@ -3,7 +3,7 @@
 
 #include <syscall.h>
 
-#include "mg.pb.h"
+#include <google/protobuf/stubs/common.h>
 #include <google/protobuf/io/coded_stream.h>
 
 #include<unistd.h>
@@ -11,7 +11,11 @@
 #include <iostream>
 #include <sstream>
 #include <stdio.h>
-#include <google/protobuf/stubs/common.h>
+
+
+
+#include "mg.pb.h"
+#include "MAGIC_CODE_RESPONSE.pb.h"
  
 using namespace google::protobuf::io;
 
@@ -68,6 +72,21 @@ void testpb()
     printf("%lld\n",rev.machinepowerontime());
 
 
+    MAGIC_CODE_RESPONSE* mg_resp=new MAGIC_CODE_RESPONSE();
+    mg_resp->set_psudorandomnumber(1L);
+    mg_resp->set_featureunlock_(false);
+    mg_resp->set_machineunlock_(false);
+    mg_resp->set_magictype_(4);
+    mg_resp->set_dayspurchased_(5);
+    mg_resp->set_spindlemaxspeed_(6);
+    mg_resp->set_maxmemory_(7);
+    mg_resp->set_ltspindlemaxspeed_(8);
+    mg_resp->set_subspindlemaxspeed_(9);
+    mg_resp->set_duplicatevalues_(10);
+
+    
+
+    delete mg_resp;
 
 
 

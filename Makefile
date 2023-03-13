@@ -1,7 +1,7 @@
 
 
 
-CXXFILE= main.cpp mg.pb.cc 
+CXXFILE= main.cpp mg.pb.cc  MAGIC_CODE_RESPONSE.pb.cc
 LDFLAGS=-L/home/lela/gnu/pb-2.4.1-arm-linux/lib -lprotobuf-lite -pthread -lpthread -static
 CFLAGS=-pthread -I/home/lela/gnu/pb-2.4.1-arm-linux/include -O
 CXX=arm-linux-gnueabi-g++ -std=c++98
@@ -14,7 +14,7 @@ hook.elf :  hook.c
 
 printf_syscall.elf :printf_syscall.c
 	@echo "test syscall build........"
-	$(CC) -Wl,--script=./map.ld -s -Os -static -fPIC -nostartfiles -e t__printf $^ -o bin/$@ 
+	$(CC) -Wl,--script=./map.ld -s  -static -fPIC -nostartfiles -e t__printf $^ -o bin/$@ 
 
 hasme.elf : hasme.c
 	$(CC) -lm $^ -o bin/$@

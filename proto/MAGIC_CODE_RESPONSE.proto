@@ -1,0 +1,14 @@
+option optimize_for = LITE_RUNTIME;
+
+message MAGIC_CODE_RESPONSE{
+    required int64 psudoRandomNumber=1;
+    required bool featureUnlock_=2;
+    required bool machineUnlock_=3;
+    required int32 magicType_=4;
+    required int32 daysPurchased_=5;
+    required int64 spindleMaxSpeed_=6;
+    required int32 maxMemory_=7;
+    required int32 ltSpindleMaxSpeed_=8;
+    required int32 subSpindleMaxSpeed_=9;
+    required bool duplicateValues_=10;
+}
