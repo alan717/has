@@ -1,0 +1,11 @@
+
+option optimize_for = LITE_RUNTIME;
+import "QueueMessage.proto";
+message CMD_BLOCK{
+    required QueueAction actionRequested_=1;
+    required int64  blockID=2;
+    required bool isProcessed=3;
+    required FIR_ORDER_CHANGE firOrderChange_=4;
+
+
+}
